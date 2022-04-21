@@ -16,6 +16,7 @@ public class RequestHeaderServlet extends HttpServlet {
         printStartLine(request);
         printHeaders(request);
         printHeaderUtils(request);
+        printEtc(request);
     }
 
     private void printStartLine(HttpServletRequest request) {
@@ -54,6 +55,10 @@ public class RequestHeaderServlet extends HttpServlet {
         // 요즘 스타일은 아래와 같다.
         request.getHeaderNames().asIterator()
                 .forEachRemaining(headerName -> System.out.println(headerName + ": " + headerName));
+
+        // 원하는 값이 host 이면 원하는 값을 꺼낼 수가 있다.
+        request.getHeader("host");
+
 
         System.out.println("--- Headers - end ---");
         System.out.println();
@@ -95,6 +100,28 @@ public class RequestHeaderServlet extends HttpServlet {
                 request.getCharacterEncoding());
 
         System.out.println("--- Header 편의 조회 end ---");
+        System.out.println();
+    }
+
+
+    //기타 정보
+    private void printEtc(HttpServletRequest request) { System.out.println("--- 기타 조회 start ---");
+        System.out.println("[Remote 정보]");
+        System.out.println("request.getRemoteHost() = " +
+                request.getRemoteHost()); //
+        System.out.println("request.getRemoteAddr() = " +
+                request.getRemoteAddr()); //
+        System.out.println("request.getRemotePort() = " +
+                request.getRemotePort()); //
+        System.out.println();
+        System.out.println("[Local 정보]");
+        System.out.println("request.getLocalName() = " +
+                request.getLocalName()); //
+        System.out.println("request.getLocalAddr() = " +
+                request.getLocalAddr()); //
+        System.out.println("request.getLocalPort() = " +
+                request.getLocalPort()); //
+        System.out.println("--- 기타 조회 end ---");
         System.out.println();
     }
 }
