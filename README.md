@@ -1,1 +1,1 @@
-# SpringMvcStudy 👍
+# springMvcStudy 👍
